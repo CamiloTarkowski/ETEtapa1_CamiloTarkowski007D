@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    {%load static%} 
+    <link rel="stylesheet" type="text/css" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-sm fondocolor"> <!--Menú de navegación-->
+        <a class="navbar-brand" href="#">
+        </a>
+          <ul class="navbar-nav">
+
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'index' %}">INICIO</a>
+              
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'crear' %}">CREAR</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'ver_delete' %}">VER O ELIMINAR</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'modificar' %}">MODIFICAR</a>
+            </li>
+          </ul>
+        </nav> 
+        <script>
+            $(function() 
+            {
+              $("formulario").validate({
+                   rules: {
+                          rut: "required",
+                          nombres: "required",
+                          appaterno: "required",
+                          apmaterno: "required",
+                          fono: "required",
+                          email: "required",
+                          password: "required",
+                          genero: "required",
+                          },   
+                          
+                     messages: 
+                      {
+                      rut: {
+                          required: 'Ingresa el rut',
+                        },
+                      nombres: {
+                          required: 'Ingresa los nombres',
+                      },
+                      appaterno:{
+                          required: 'Ingrese apellido paterno',
+                          
+                      },
+                      apmaterno:{
+                          required: 'Ingrese apellido materno',
+                      },
+                      fono: {
+                          required: 'Ingresa el teléfono',
+                      },
+                      email:{
+                          required: 'Ingrese email',
+                          
+                      },
+                      password:{
+                          required: 'Ingrese contraseña',
+                      },
+                      genero:{
+                          required: 'Ingrese género',
+                      },
+  
+  
+                       
+                  }//messages
+              }); //$('#formulario').validate
+          }); //function
+    </script>
+          <script>
+            function colorIn(a)
+              {
+                  a.style.background = "#F5FEFF";
+              }
+            function colorOut(a)
+            {
+                  a.style.background = "#FFFFFF";
+            }
+          </script>
+  
+          <section class = "style-formulario">
+  
+              <h2 style="font-family: monospace;">Registrar Colaborador</h2>
+              <hr>
+              <div class="container">
+                <form method="POST" action="#" id="formulario">
+                    {%csrf_token%}
+                    <div class="form-group">
+                        {{colaborador_form.rut.label}}
+                        {{colaborador_form.rut}}
+                    </div>
+                    <div class="form-group">
+                      {{colaborador_form.nombre.label}}
+                      {{colaborador_form.nombre}}
+                    </div>
+                    <div class="form-group">
+                      {{colaborador_form.fono.label}}
+                      {{colaborador_form.fono}}
+                    </div>
+                    <div class="form-group">
+                      {{colaborador_form.email.label}}
+                      {{colaborador_form.email}}
+                    </div>
+                    <div class="form-group">
+                        {{colaborador_form.password.label}}
+                        {{colaborador_form.password}}
+                    </div>
+                    <div class="form-group">
+                      {{colaborador_form.genero.label}}
+                      {{colaborador_form.genero}}
+                  </div>
+                    <div class="form-group">
+                         <input type="submit" class="btn btn-primary" id="enviar" value="Enviar">
+                        <input type="reset" class="btn btn-primary" id="limpiar" value="Limpiar">
+                    </div>
+                </form>
+            </div>
+      
+              
+           </section>    
+    <div class="row"> </div>
+    <footer> <!--Footer-->
+      <div class="container-fluid fondocolor">
+        <h2 class="centertext">Camilo Tarkowski. @Copyrigth Derechos reservados.</h2>
+        <h1 class="centertext">"Caos news"</h1>
+        <p class="centertext">Noticias</p>
+      </div>
+    </footer>   
+</body>
+</html>
